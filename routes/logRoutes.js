@@ -32,25 +32,25 @@ router.get('/', async(req, res)=> {
 const constructQuery=(query) =>{
     let queryObj={};
     if(query.level){
-        queryObj['level']=query.level;
+        queryObj['level']={ $regex: query.level, $options: 'i' };
     }
     if(query.message){
-        queryObj['message']=query.message;
+        queryObj['message']={ $regex: query.message, $options: 'i' };
     }
     if(query.resourceId){
-        queryObj['resourceId']=query.resourceId;
+        queryObj['resourceId']={ $regex: query.resourceId, $options: 'i' };
     }
     if(query.timestamp){
-        queryObj['timestamp']=query.timestamp;
+        queryObj['timestamp']={ $regex: query.timestamp, $options: 'i' };
     }
     if(query.traceId) {
-        queryObj['traceId']=query.traceId;
+        queryObj['traceId']={ $regex: query.traceId, $options: 'i' };
     }
     if(query.spanId) {
-        queryObj['spanId']=query.spanId;
+        queryObj['spanId']={ $regex: query.spanId, $options: 'i' };
     }
     if(query.commit) {
-        queryObj['commit']=query.commit;
+        queryObj['commit']={ $regex: query.commit, $options: 'i' };
     }
     // if(query.metadata){
     //     if(query.metadata.parentResourceId){
@@ -63,7 +63,7 @@ const constructQuery=(query) =>{
 }
 //router to search book
 router.get('/search',async function(request,response){
-    const   query  = constructQuery(request.query);
+    const query  = constructQuery(request.query);
     console.log("inside search")
     console.log(request.query)
     console.log(query)
