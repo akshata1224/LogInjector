@@ -1,12 +1,11 @@
 import express from "express"
-import {PORT, mongoURL} from './config.js';
+import {mongoURL} from './config.js';
 import logRoutes from './routes/logRoutes.js';
 import mongoose from "mongoose";
 import cors from 'cors';
 import bodyParser from "body-parser";
-// const DATABASE = process.env.DATABASE.toString()
-// // let bodyParser = require('body-parser');
 
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors())
 app.use(express.json());
